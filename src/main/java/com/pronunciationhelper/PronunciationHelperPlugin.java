@@ -12,6 +12,7 @@ import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 
+import java.awt.*;
 import java.util.Map;
 
 @Slf4j
@@ -64,13 +65,16 @@ public class PronunciationHelperPlugin extends Plugin
 
 			for (Map.Entry<String, String> entry : PronunciationHelperDictionary.PRONUNCIATIONS.entrySet())
 			{
+				Color color = config.pronunciationColor();
+				//format for runelite to process colours correctly
+				String colorHex = String.format("%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue());
 				String word = entry.getKey();
 				String pronunciation = entry.getValue();
 
-				// Add pronunciation in configurable colour (TODO make configurable)
+				// Add pronunciation in configurable colour
 				newText = newText.replaceAll(
 						"\\b" + word + "\\b",
-						word + " (<col=ffff00>" + pronunciation + "</col>)"
+						word + " (<col=" + colorHex +">" + pronunciation + "</col>)"
 				);
 			}
 

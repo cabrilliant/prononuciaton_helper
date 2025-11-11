@@ -4,16 +4,19 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
-@ConfigGroup("example")
+import java.awt.*;
+
+@ConfigGroup("PronunciationHelper")
 public interface PronunciationHelperConfig extends Config
 {
 	@ConfigItem(
-		keyName = "greeting",
-		name = "Welcome Greeting",
-		description = "The message to show to the user when they login"
+			keyName = "pronunciationColor",
+			name = "Pronunciation Color",
+			description = "Color code for pronunciation hints",
+			position = 1
 	)
-	default String greeting()
+	default Color pronunciationColor()
 	{
-		return "Hello";
+		return Color.YELLOW;
 	}
 }
