@@ -52,33 +52,36 @@ public class PronunciationHelperPlugin extends Plugin
 
 	private void handleDialogueWidget(Widget widget)
 	{
-		if (widget == null)
-		{
-			return;
-		}
+		if (widget == null) return;
 
 		String text = widget.getText();
-		if (text == null || text.isEmpty())
-		{
-			return;
-		}
+		if (text == null || text.isEmpty()) return;
 
-		if (!text.equals(lastTextProcessed)) {
+		//this check is needed or we will keep replacing the word forever overflowing the message container
+		if (!text.equals(lastTextProcessed))
+		{
 			String newText = text;
-			for (Map.Entry<String, String> entry : PronunciationHelperDictionary.PRONUNCIATIONS.entrySet()) {
+
+			for (Map.Entry<String, String> entry : PronunciationHelperDictionary.PRONUNCIATIONS.entrySet())
+			{
 				String word = entry.getKey();
 				String pronunciation = entry.getValue();
 
-				// Replace full words only, not substrings inside other words
-				newText = newText.replaceAll("\\b" + word + "\\b", word + "(" + pronunciation + ")");
+				// Add pronunciation in configurable colour (TODO make configurable)
+				newText = newText.replaceAll(
+						"\\b" + word + "\\b",
+						word + " (<col=ffff00>" + pronunciation + "</col>)"
+				);
 			}
 
-			if (!newText.equals(text)) {
+			if (!newText.equals(text))
+			{
 				widget.setText(newText);
+				widget.revalidate();
 			}
+
 			lastTextProcessed = newText;
 		}
-
 	}
 
 	@Provides
