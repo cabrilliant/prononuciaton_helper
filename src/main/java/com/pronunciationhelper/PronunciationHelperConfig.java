@@ -13,7 +13,7 @@ public interface PronunciationHelperConfig extends Config
 	@ConfigItem(
 			keyName = "pronunciationColor",
 			name = "Pronunciation Color",
-			description = "Color code for pronunciation hints",
+			description = "Color for pronunciation hints",
 			position = 1
 	)
 	default Color pronunciationColor()
@@ -22,14 +22,26 @@ public interface PronunciationHelperConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "translationHotkey",
-			name = "Show only translation",
-			description = "Hold this key to show only the translation instead of word(translation)",
+			keyName = "alwaysShow",
+			name = "Always Show pronunciation",
+			description = "When enabled, will always show pronunciations regardless of pronunciation hotkey",
 			position = 2
 	)
-	default Keybind translationHotkey()
+	default boolean alwaysShow()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+			keyName = "pronunciationHotkey",
+			name = "Show only pronunciation",
+			description = "Hold this key to show only the pronunciation instead of word(pronunciation)",
+			position = 3
+	)
+	default Keybind pronunciationHotkey()
 	{
 		return Keybind.SHIFT;
+
 	}
 }
 

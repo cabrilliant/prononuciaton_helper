@@ -47,7 +47,7 @@ public class PronunciationHelperPlugin extends Plugin
 		@Override
 		public void keyPressed(KeyEvent e)
 		{
-			if (config.translationHotkey().matches(e))
+			if (config.pronunciationHotkey().matches(e))
 			{
 				showOnlyTranslation = true;
 				//allow the sub to take place
@@ -58,7 +58,7 @@ public class PronunciationHelperPlugin extends Plugin
 		@Override
 		public void keyReleased(KeyEvent e)
 		{
-			if (config.translationHotkey().matches(e))
+			if (config.pronunciationHotkey().matches(e))
 			{
 				showOnlyTranslation = false;
 				lastTextProcessed = "";
@@ -113,7 +113,7 @@ public class PronunciationHelperPlugin extends Plugin
 
 				String replacement = showOnlyTranslation
 						? "<col=" + colorHex + ">" + pronunciation + "</col>"
-						: word + " (<col=" + colorHex + ">" + pronunciation + "</col>)";
+						: (config.alwaysShow() ?  word + " (<col=" + colorHex + ">" + pronunciation + "</col>)": word);
 
 				newText = newText.replaceAll("\\b" + word + "\\b", Matcher.quoteReplacement(replacement));
 			}
