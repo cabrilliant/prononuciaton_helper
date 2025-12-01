@@ -18,6 +18,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.Map;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Slf4j
 @PluginDescriptor(
@@ -111,11 +112,27 @@ public class PronunciationHelperPlugin extends Plugin
 				String word = entry.getKey();
 				String pronunciation = entry.getValue();
 
-				String replacement = showOnlyTranslation
-						? "<col=" + colorHex + ">" + pronunciation + "</col>"
-						: (config.alwaysShow() ?  word + " (<col=" + colorHex + ">" + pronunciation + "</col>)": word);
+				//make sure we can actually match entries when casing doesnt match the dictionary
+				Pattern pattern = Pattern.compile("\\b" + Pattern.quote(word) + "\\b", Pattern.CASE_INSENSITIVE);
+				Matcher matcher = pattern.matcher(newText);
 
-				newText = newText.replaceAll("\\b" + word + "\\b", Matcher.quoteReplacement(replacement));
+				StringBuffer sb = new StringBuffer();
+				while (matcher.find())
+				{
+					String matchedWord = matcher.group();
+
+					//the reason we do it this way is to preserve the original casing of the word in the text.
+					//The previous approach would sometimes capitalize words that were not originally capitalized
+					String replacement = showOnlyTranslation
+							? "<col=" + colorHex + ">" + pronunciation + "</col>"
+							: (config.alwaysShow()
+							? matchedWord + " (<col=" + colorHex + ">" + pronunciation + "</col>)"
+							: matchedWord);
+
+					matcher.appendReplacement(sb, Matcher.quoteReplacement(replacement));
+				}
+				matcher.appendTail(sb);
+				newText = sb.toString();
 			}
 
 			if (!newText.equals(text))
@@ -126,6 +143,7 @@ public class PronunciationHelperPlugin extends Plugin
 
 			lastTextProcessed = newText;
 		}
+
 	}
 
 	//returns weather text has <col=..> in it or not
