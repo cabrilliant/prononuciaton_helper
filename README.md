@@ -1,7 +1,6 @@
 # Pronunciation Helper
-This plugin will show official pronunciation of words in dialogue with npcs.
+This plugin will show official pronunciation of words in dialogue with npcs. It additonally supports the option to add right click menu options to eligible items and NPC's.
 
-Currently, it will only show the pronunciation in brackets during NPC or player dialogue.
 All pronunciations are taken from Runescape official pronunciation guide: https://runescape.wiki/w/Transcript:Pronunciation_guide
 
 ![dynamicswap](Assets/dynamic.gif)
