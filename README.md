@@ -7,7 +7,8 @@ All pronunciations are taken from Runescape official pronunciation guide: https:
 
 Options:
 - Pronunciation Color: Sets the color of the pronunciation text shown in dialogue.
-- Always Show pronunciation: If enabled, the pronunciation will always be shown in dialogue. If disabled, it will only show when the ronunciation Hotkey key is held down.
+- Always Show pronunciation: If enabled, the pronunciation will always be shown in dialogue. 
+If disabled, it will only show when the pronunciation Hotkey key is held down.
 ![always_show](Assets/default_setting.png)
 - Pronunciation Hotkey: A key to be held down that will replace the qualifying word with its pronunciation directly, as opposed to in brackets beside the word
 ![held](Assets/held_key.png)
