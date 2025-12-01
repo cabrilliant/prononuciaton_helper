@@ -75,80 +75,151 @@ public class PronunciationHelperDictionary
             Map.entry("Gorajo", "gore-AH-ho"),
             Map.entry("Graardor", "GRAAR-door"),
             Map.entry("Gulega", "gu-LAY-guh"),
+            Map.entry("Gunnarsgrun","GUH-nars-grun"),
+            Map.entry("Gu’tanoth","goo-TAN-oth"),
             Map.entry("Guthix", "GUTH-icks"),
+            Map.entry("Guam", "GWAM"),
 
             // H
+            Map.entry("Haasgehnahk", "has-GEN-ack"),
+            Map.entry("Har-aken", "har-ACK-un"),
+            Map.entry("Har’laak", "HAR-lack"),
             Map.entry("Harralander", "HAH-ruh-land-er"),
             Map.entry("Hazeel", "HAZ-eel"),
+            Map.entry("Heim Crab", "HYME CRAB"),
+            Map.entry("Hemenster", "HEH-men-ster"),
 
             // I
             Map.entry("Iban", "ee-BAHN"),
             Map.entry("Icthlarin", "ICK-thlar-in"),
+            Map.entry("Icyene", "i-SEEN"),
+            Map.entry("Ihlakizan", "i-LACK-ee-zan"),
             Map.entry("Ikov", "i-KOV"),
+            Map.entry("Irit", "ih-RIT"),
             Map.entry("Isafdar", "ISS-aff-dar"),
 
             // J
             Map.entry("Jagex", "JAG-ecks"),
+            Map.entry("Jaldroacht", "JAL-dro-akt"),
+            Map.entry("Jaleustrophos", "jal-YUS-tro-foss"),
+            Map.entry("Jalsavrah", "jal-SAV-rah"),
+            Map.entry("Jatizso", "yah-TIZZ-so"),
             Map.entry("Jhallan", "Jah-LAN"),
+            Map.entry("Jiggig", "jih-GIG"),
 
             // K
             Map.entry("K'ril Tsutsaroth", "KRILL TUTT-zee-roth"),
+            Map.entry("Kal’gerion", "KAL-gare-ee-on"),
             Map.entry("Kalphite", "KAL-fight"),
             Map.entry("Kandarin", "kan-DAR-in"),
+            Map.entry("Karambwan", "ker-RAM-bwan"),
+            Map.entry("Karambwanji", "ker-RAM-bwan-jee"),
             Map.entry("Karamja", "ker-RAM-jar"),
             Map.entry("Karil", "KAH-ril"),
+            Map.entry("Keldagrim", "KELL-duh-grim"),
+            Map.entry("Kethsi", "KETH-see"),
+            Map.entry("Kharazi", "KUH-rah-zee"),
+            Map.entry("Kharidian", "kar-RID-ian"),
+            Map.entry("Khigohrahk", "ki-go-RACK"),
+            Map.entry("Kharshai", "KAR-shy"),
+            Map.entry("Khazard", "kah-ZARD"),
+            Map.entry("Kinshra", "kin-SHRAH"),
+            Map.entry("Korasi", "kor-AH-zee"),
+            Map.entry("Koschei", "KOSH-i"),
             Map.entry("Kree'Arra", "KREE-ah-ruh"),
+            Map.entry("Kwuarm", "KWARM"),
 
             // L
+            Map.entry("Lakhrahnaz", "LAH-kruh-naz"),
+            Map.entry("Lantadyme", "LANT-er-deem"),
+            Map.entry("Linza", "LIN-zuh"),
             Map.entry("Lletya", "LLE-to-ah"),
+            Map.entry("Lucien", "LOO-see-yun"),
             Map.entry("Lumbridge", "LUM-bridge"),
 
             // M
+            Map.entry("McGrubor", "muh-GROO-ber"),
             Map.entry("Mahjarrat", "MAH-jer-att"),
             Map.entry("Marimbo", "mah-RIM-bo"),
+            Map.entry("Marrentill", "mah-ren-TILL"),
+            Map.entry("Mazchna", "mash-ner"),
+            Map.entry("Meiyerditch", "my-er-DITCH"),
             Map.entry("Menaphos", "men-AH-foz"),
+            Map.entry("Miscellanea", "miss-ell-AY-nee-ah"),
             Map.entry("Misthalin", "MISS-thah-lin"),
+            Map.entry("Mort’ton", "MOR-tonn"),
+            Map.entry("Mort Myre", "MORT My-er"),
             Map.entry("Morytania", "mor-ee-TAY-nee-ah"),
             Map.entry("Mos Le’Harmless", "MOH-s lee-HARM-less"),
+            Map.entry("Musa", "MOO-sah"),
+            Map.entry("Muspah", "MOOSE-pa"),
+            Map.entry("Myreque", "my-er-KEY"),
 
             // N
             Map.entry("Naragi", "Na-RAH-gee"),
+            Map.entry("Nardah", "NAR-duh"),
             Map.entry("Neitiznot", "NAY-tizz-not"),
 
             // O
             Map.entry("Ocellus", "Oh-SELL-us"),
+            Map.entry("Oo’glog", "OO-glog"),
+            Map.entry("Owen", "OH-win"),
             Map.entry("Ozan", "OH-zan"),
 
             // P
+            Map.entry("Pawya", "POOR-yuh"),
+            Map.entry("Piscatoris", "piss-kah-TOR-iss"),
             Map.entry("Pollnivneach", "POL-niv-neech"),
             Map.entry("Port Phasmatys", "PORT faz-MAT-iss"),
             Map.entry("Prifddinas", "prive-THEE-nuss"),
 
             // R
             Map.entry("Ranarr", "Ran-AH"),
+            Map.entry("Reldo", "RELL-doh"),
             Map.entry("Rellekka", "rell-eh-KAH"),
 
             // S
+            Map.entry("Safalaan", "SAFF-ah-lan"),
+            Map.entry("Sagittare", "SAJ-ee-tare"),
+            Map.entry("Sanguinesti", "sang-gwin-NEST-tee"),
             Map.entry("Saradomin", "sa-ra-DOME-in"),
+            Map.entry("Scabaras", "SCAB-ah-rass"),
+            Map.entry("Scimitar", "SIM-mit-tar"),
             Map.entry("Senntisten", "sen-TISS-ten"),
             Map.entry("Seren", "SEH-run"),
+            Map.entry("Sharathteerk", "SHA-rath-tea-erk"),
+            Map.entry("Shukarhazh", "SHOO-kuh-raz"),
+            Map.entry("Skargaroth", "SCAR-gah-roth"),
             Map.entry("Sliske", "SLISS-kay"),
             Map.entry("Sophanem", "SOFF-uh-nem"),
             Map.entry("Statius", "STAY-shuss"),
+            Map.entry("Strykewyrm", "STRIKE-worm"),
 
             // T
+            Map.entry("Tai Bwo Wannai", "TIE BWO ONE-i"),
+            Map.entry("Tarromin", "TAH-roe-min"),
             Map.entry("Taverley", "TAH-ver-lee"),
             Map.entry("Tirannwn", "TIR-an-un"),
+            Map.entry("To’kash", "toh-CASH"),
             Map.entry("TokHaar", "TOK-har"),
             Map.entry("Torag", "TOR-agg"),
             Map.entry("Torstol", "TOR-stoll"),
+            Map.entry("Triskelion", "Tri-SKEL-li-on"),
+            Map.entry("Trollweiss", "TROLL-vice"),
             Map.entry("Tumeken", "TOO-meh-ken"),
             Map.entry("Tuska", "TUSS-kah"),
             Map.entry("TzHaar", "ZAR"),
             Map.entry("TzTok-Jad", "tuz-tok-JAD"),
 
+            // U
+            Map.entry("Ugthanki", "UG-thank-ee"),
+            Map.entry("Uzer", "OO-zer"),
+
             // V
+            Map.entry("Vanescula", "VAN-ess-cue-la"),
+            Map.entry("Vannaka", "VAN-ah-kuh"),
             Map.entry("Varrock", "vah-ROCK"),
+            Map.entry("Veliaf", "VELL-ee-aff"),
             Map.entry("Verac", "vuh-RACK"),
 
             // W
@@ -159,9 +230,13 @@ public class PronunciationHelperDictionary
 
             // Y
             Map.entry("Yanille", "ya-NEEL"),
+            Map.entry("Yk’lagor", "YUK-lag-gor"),
 
             // Z
             Map.entry("Zamorak", "ZAM-or-ack"),
+            Map.entry("Zanaris", "zuh-NAR-iss"),
+            Map.entry("Zemouregal", "ZEM-or-ee-gal"),
+            Map.entry("Zenevivia", "zen-uh-VIV-ee-ah"),
             Map.entry("Zilyana", "zil-YAR-nuh"),
             Map.entry("Zuriel", "ZUR-ee-ell")
     );
