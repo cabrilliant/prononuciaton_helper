@@ -29,7 +29,7 @@ public interface PronunciationHelperConfig extends Config
 	)
 	default boolean alwaysShow()
 	{
-		return true;
+		return false;
 	}
 
 	@ConfigItem(
@@ -42,6 +42,28 @@ public interface PronunciationHelperConfig extends Config
 	{
 		return Keybind.SHIFT;
 
+	}
+
+	@ConfigItem(
+			keyName = "showPronunciationHighlight",
+			name = "Highlight Eligible Words",
+			description = "When enabled, will highlight words that can have pronunciations shown",
+			position = 4
+	)
+	default boolean showPronunciationHighlight()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+			keyName = "pronunciationHighlightColor",
+			name = "Pronunciation Highlight Color",
+			description = "Color to highlight words that have pronunciations available. Ignored if Always Show pronunciation is enabled, or if  Show Pronuncation Highlight is disabled.",
+			position = 5
+	)
+	default Color pronunciationHighlightColor()
+	{
+		return Color.MAGENTA;
 	}
 }
 
