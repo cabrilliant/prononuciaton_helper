@@ -116,19 +116,19 @@ public class PronunciationHelperPlugin extends Plugin
 		for (MenuEntry entry : entries)
 		{
 			//remove colour formatting as well as combat levels
-			String npcName = entry.getTarget()
+			String targetName = entry.getTarget()
 					.replaceAll("<[^>]*>", "")
 					.replaceAll("\\s*\\(level-\\d+\\)$", "");
 
 			String matchedKey = PronunciationHelperDictionary.PRONUNCIATIONS.keySet().stream()
-					.filter(word -> word.equalsIgnoreCase(npcName))
+					.filter(word -> targetName.toLowerCase().contains(word.toLowerCase()))
 					.findFirst()
 					.orElse(null);
 
 			if (matchedKey == null)
 				continue;
 
-			// Find the Cancel entry index
+			//find the cancel entry index
 			int cancelIndex = -1;
 			for (int i = 0; i < entries.length; i++)
 			{
@@ -139,7 +139,7 @@ public class PronunciationHelperPlugin extends Plugin
 				}
 			}
 
-			// Insert above Cancel, or at bottom if no Cancel found
+			//insert above Cancel, or at bottom if no cancel found
 			int insertIndex = cancelIndex > 0 ? cancelIndex : 1;
 
 			client.createMenuEntry(insertIndex)

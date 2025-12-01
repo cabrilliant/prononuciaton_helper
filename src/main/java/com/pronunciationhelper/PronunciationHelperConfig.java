@@ -70,7 +70,7 @@ public interface PronunciationHelperConfig extends Config
 	@ConfigItem(
 			keyName = "showContextMenu",
 			name = "Show Right Click Option",
-			description = "When enabled, adds a right click menu for NPC's with pronunciations available, and will generate a chat message with the pronunciation when clicked.",
+			description = "When enabled, adds a right click menu for NPC's and items with pronunciations available, and will generate a chat message with the pronunciation when clicked.",
 			position = 6
 	)
 
