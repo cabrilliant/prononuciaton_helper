@@ -45,25 +45,38 @@ public interface PronunciationHelperConfig extends Config
 	}
 
 	@ConfigItem(
+			keyName = "pronunciationHighlightColor",
+			name = "Pronunciation Highlight Color",
+			description = "Color to highlight words that have pronunciations available. Ignored if Always Show pronunciation is enabled, or if  Show Pronuncation Highlight is disabled.",
+			position = 4
+	)
+	default Color pronunciationHighlightColor()
+	{
+		return Color.MAGENTA;
+	}
+
+	@ConfigItem(
 			keyName = "showPronunciationHighlight",
 			name = "Highlight Eligible Words",
 			description = "When enabled, will highlight words that can have pronunciations shown",
-			position = 4
+			position = 5
 	)
 	default boolean showPronunciationHighlight()
 	{
 		return true;
 	}
 
+	//make key to determine if right click menu entry should be shown
 	@ConfigItem(
-			keyName = "pronunciationHighlightColor",
-			name = "Pronunciation Highlight Color",
-			description = "Color to highlight words that have pronunciations available. Ignored if Always Show pronunciation is enabled, or if  Show Pronuncation Highlight is disabled.",
-			position = 5
+			keyName = "showContextMenu",
+			name = "Show Right Click Option",
+			description = "When enabled, adds a right click menu for NPC's with pronunciations available, and will generate a chat message with the pronunciation when clicked.",
+			position = 6
 	)
-	default Color pronunciationHighlightColor()
+
+	default boolean showContextMenu()
 	{
-		return Color.MAGENTA;
+		return false;
 	}
 }
 

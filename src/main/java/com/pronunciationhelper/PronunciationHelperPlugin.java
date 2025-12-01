@@ -102,6 +102,9 @@ public class PronunciationHelperPlugin extends Plugin
 	@Subscribe
 	public void onMenuOpened(MenuOpened event)
 	{
+		if (!config.showContextMenu()){
+			return;
+		}
 		MenuEntry[] entries = event.getMenuEntries();
 		if (entries.length == 0)
 			return;
