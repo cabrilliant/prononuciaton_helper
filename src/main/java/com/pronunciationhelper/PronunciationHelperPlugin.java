@@ -104,8 +104,6 @@ public class PronunciationHelperPlugin extends Plugin
 		if (!text.equals(lastTextProcessed))
 		{
 			String newText = originalText;
-			Color color = config.pronunciationColor();
-			String colorHex = String.format("%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue());
 
 			for (Map.Entry<String, String> entry : PronunciationHelperDictionary.PRONUNCIATIONS.entrySet())
 			{
@@ -119,16 +117,10 @@ public class PronunciationHelperPlugin extends Plugin
 				StringBuffer sb = new StringBuffer();
 				while (matcher.find())
 				{
-					String matchedWord = matcher.group();
-
 					//the reason we do it this way is to preserve the original casing of the word in the text.
 					//The previous approach would sometimes capitalize words that were not originally capitalized
-					String replacement = showOnlyTranslation
-							? "<col=" + colorHex + ">" + pronunciation + "</col>"
-							: (config.alwaysShow()
-							? matchedWord + " (<col=" + colorHex + ">" + pronunciation + "</col>)"
-							: matchedWord);
-
+					String matchedWord = matcher.group();
+					String replacement = getReplacementText(matchedWord, pronunciation);
 					matcher.appendReplacement(sb, Matcher.quoteReplacement(replacement));
 				}
 				matcher.appendTail(sb);
@@ -144,6 +136,26 @@ public class PronunciationHelperPlugin extends Plugin
 			lastTextProcessed = newText;
 		}
 
+	}
+
+	//returns the text to replace for the matched word eligible for pronunciation based on config options
+	private String getReplacementText(String matchedWord, String pronunciation) {
+
+		Color pronunciationColor = config.pronunciationColor();
+		String pronunciationColorHex = String.format("%02x%02x%02x", pronunciationColor.getRed(), pronunciationColor.getGreen(), pronunciationColor.getBlue());
+
+		Color eligiblePronunciationColor = config.pronunciationHighlightColor();
+		String eligiblePronunciationColorHex = String.format("%02x%02x%02x", eligiblePronunciationColor.getRed(), eligiblePronunciationColor.getGreen(), eligiblePronunciationColor.getBlue());
+
+		if (showOnlyTranslation) { //i.e translation hotkey is being held
+	        return "<col=" + pronunciationColorHex + ">" + pronunciation + "</col>";
+	    } else if (config.alwaysShow()) {
+	        return matchedWord + " (<col=" + pronunciationColorHex + ">" + pronunciation + "</col>)";
+	    } else if (config.showPronunciationHighlight()) {
+	        return "<col=" + eligiblePronunciationColorHex + ">" + matchedWord + "</col>";
+	    }
+
+		return matchedWord;
 	}
 
 	//returns weather text has <col=..> in it or not
