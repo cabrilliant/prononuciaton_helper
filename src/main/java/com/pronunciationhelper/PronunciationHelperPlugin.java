@@ -2,20 +2,27 @@ package com.pronunciationhelper;
 
 import com.google.inject.Provides;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
+import net.runelite.api.MenuAction;
+import net.runelite.api.MenuEntry;
 import net.runelite.api.events.GameTick;
+import net.runelite.api.events.MenuOpened;
 import net.runelite.api.widgets.ComponentID;
 import net.runelite.api.widgets.Widget;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.input.KeyListener;
 import net.runelite.client.input.KeyManager;
+import net.runelite.client.menus.MenuManager;
+import net.runelite.client.menus.WidgetMenuOption;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 
 import javax.inject.Inject;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -35,10 +42,14 @@ public class PronunciationHelperPlugin extends Plugin
 	@Inject
 	private KeyManager keyManager;
 
+	@Inject
+	private MenuManager menuManager;
+
 	private String lastTextProcessed;
 	private boolean showOnlyTranslation = false;
 	private String originalText;
 
+	private final String MENU_ENTRY_NAME = "Pronounce";
 
 	private final KeyListener translationKeyListener = new KeyListener()
 	{
@@ -86,6 +97,63 @@ public class PronunciationHelperPlugin extends Plugin
 	{
 		handleDialogueWidget(client.getWidget(ComponentID.DIALOG_NPC_TEXT));
 		handleDialogueWidget(client.getWidget(ComponentID.DIALOG_PLAYER_TEXT));
+	}
+
+	@Subscribe
+	public void onMenuOpened(MenuOpened event)
+	{
+		MenuEntry[] entries = event.getMenuEntries();
+		if (entries.length == 0)
+			return;
+
+		if (Arrays.stream(entries)
+				.anyMatch(e -> MENU_ENTRY_NAME.equals(e.getOption())))
+			return;
+
+		for (MenuEntry entry : entries)
+		{
+			//remove colour formatting as well as combat levels
+			String npcName = entry.getTarget()
+					.replaceAll("<[^>]*>", "")
+					.replaceAll("\\s*\\(level-\\d+\\)$", "");
+
+			String matchedKey = PronunciationHelperDictionary.PRONUNCIATIONS.keySet().stream()
+					.filter(word -> word.equalsIgnoreCase(npcName))
+					.findFirst()
+					.orElse(null);
+
+			if (matchedKey == null)
+				continue;
+
+			// Find the Cancel entry index
+			int cancelIndex = -1;
+			for (int i = 0; i < entries.length; i++)
+			{
+				if (MenuAction.CANCEL.equals(entries[i].getType()))
+				{
+					cancelIndex = i;
+					break;
+				}
+			}
+
+			// Insert above Cancel, or at bottom if no Cancel found
+			int insertIndex = cancelIndex > 0 ? cancelIndex : 1;
+
+			client.createMenuEntry(insertIndex)
+					.setOption(MENU_ENTRY_NAME)
+					.setTarget(entry.getTarget())
+					.setType(MenuAction.RUNELITE_LOW_PRIORITY)
+					.onClick(ev -> generatePronunciationChatboxMessage(matchedKey));
+
+			return;
+		}
+	}
+
+
+	private void generatePronunciationChatboxMessage(String npcName) {
+		String pronunciation = PronunciationHelperDictionary.PRONUNCIATIONS.get(npcName);
+		client.addChatMessage(ChatMessageType.GAMEMESSAGE,
+				"", npcName + " is pronounced: " + pronunciation, null);
 	}
 
 	private void handleDialogueWidget(Widget widget)
